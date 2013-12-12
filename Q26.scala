@@ -10,6 +10,7 @@ def KCombinationsFrom[A](ls:List[A], K:Int):List[List[A]] = {
   else
     if (K < 1) throw new IllegalArgumentException
     else if (K == 1) ls.map(List(_))
+    else if (K == ls.length) List(ls)
     else (for {i <- List.range(0,ls.length-1)} yield {
         stickXInFront(ls(i), KCombinationsFrom(ls.slice(i+1,ls.length), K-1) )
       }).flatten
